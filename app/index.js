@@ -6,7 +6,7 @@ var chalk = require('chalk');
 var AspnetGenerator = yeoman.generators.Base.extend({
 
     init: function () {
-        this.log(yosay('Welcome to the marvellous ASP.NET 5 generator!'));
+        this.log(yosay('Welcome to the marvellous F# ASP.NET 5 generator!'));
     },
 
     askFor: function () {
@@ -76,7 +76,7 @@ var AspnetGenerator = yeoman.generators.Base.extend({
         }
         var prompts = [{
             name: 'applicationName',
-            message: 'What\'s the name of your ASP.NET application?',
+            message: 'What\'s the name of your F# ASP.NET application?',
             default: app
         } ];
         this.prompt(prompts, function (props) {
@@ -88,7 +88,7 @@ var AspnetGenerator = yeoman.generators.Base.extend({
 
     retrieveContent: function () {
         var done = this.async();
-        this.remote('OmniSharp', 'generator-aspnet', 'release', function (err, remote) {
+        this.remote('onybo', 'generator-faspnet', 'release', function (err, remote) {
                 done();
             }, true);
     },
@@ -97,22 +97,22 @@ var AspnetGenerator = yeoman.generators.Base.extend({
         this.mkdir(this.applicationName);
         switch (this.type) {
         case 'console':
-            this.directory(this.cacheRoot() + '/OmniSharp/generator-aspnet/release/samples/console', this.applicationName);
+            this.directory(this.cacheRoot() + '/onybo/generator-aspnet/release/samples/console', this.applicationName);
             break;
         case 'web':
-            this.directory(this.cacheRoot() + '/OmniSharp/generator-aspnet/release/samples/web', this.applicationName);
+            this.directory(this.cacheRoot() + '/onybo/generator-aspnet/release/samples/web', this.applicationName);
             break;
         case 'mvc':
-            this.directory(this.cacheRoot() + '/OmniSharp/generator-aspnet/release/samples/mvc', this.applicationName);
+            this.directory(this.cacheRoot() + '/onybo/generator-aspnet/release/samples/mvc', this.applicationName);
             break;
         case 'nancy':
-            this.directory(this.cacheRoot() + '/OmniSharp/generator-aspnet/release/samples/nancy', this.applicationName);
+            this.directory(this.cacheRoot() + '/onybo/generator-aspnet/release/samples/nancy', this.applicationName);
             break;
         case 'classlib':
-            this.directory(this.cacheRoot() + '/OmniSharp/generator-aspnet/release/samples/classlib', this.applicationName);
+            this.directory(this.cacheRoot() + '/onybo/generator-aspnet/release/samples/classlib', this.applicationName);
             break;
 	case 'unittest':
-            this.directory(this.cacheRoot() + '/OmniSharp/generator-aspnet/release/samples/unittest', this.applicationName);
+	    this.directory(this.cacheRoot() + '/onybo/generator-aspnet/release/samples/unittest', this.applicationName);
             break;
         default:
             this.log('Unknown project type');
